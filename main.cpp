@@ -6,52 +6,62 @@ using namespace std;
 
 int main()
 {
-	int PlayerInput = 0;
+	int PlayerX = 1;
+	int PlayerY = 1;
+	char PlayerShape = 'P';
+	int Map[10][10] = { 
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+	};
 
-	//1. °¡À§
-	//2. ÁÖ¸Ô
-	//3. º¸ÀÚ±â
-	cin >> PlayerInput;
+	while(true)
+	{
+		int KeyCode = _getch();
 
-	srand(time(nullptr));
+		if (KeyCode == 'w')
+		{
+			PlayerY--;
+		}
+		else if (KeyCode == 's')
+		{
+			PlayerY++;
+		}
+		else if (KeyCode == 'a')
+		{
+			PlayerX--;
+		}
+		else if (KeyCode == 'd')
+		{
+			PlayerX++;
+		}
+		system("cls");
 
-	int EnemyInput = (rand() % 3) + 1;
-
-	if (PlayerInput == EnemyInput)
-	{
-		cout << "¹«½ÂºÎ" << endl;
-	}
-	else if (PlayerInput == 1) // °¡À§
-	{
-		if (EnemyInput == 3)
+		for (int Y = 0; Y < 10; Y++)
 		{
-			cout << "½Â¸®" << endl;
-		}
-		else if (EnemyInput == 2)
-		{
-			cout << "ÆÐ¹è" << endl;
-		}
-	}
-	else if (PlayerInput == 2) // ÁÖ¸Ô
-	{
-		if (EnemyInput == 1)
-		{
-			cout << "½Â¸®" << endl;
-		}
-		else if (EnemyInput == 3)
-		{
-			cout << "ÆÐ¹è" << endl;
-		}
-	}
-	else if (PlayerInput == 3) // º¸ÀÚ±â
-	{
-		if (EnemyInput == 2)
-		{
-			cout << "½Â¸®" << endl;
-		}
-		else if (EnemyInput == 1)
-		{
-			cout << "ÆÐ¹è" << endl;
+			for (int X = 0; X < 10; X++)
+			{
+				if (PlayerX == X && PlayerY == Y)
+				{
+					cout << PlayerShape;
+				}
+				else if (Map[Y][X] == 0)
+				{
+					cout << " ";
+				}
+				else if (Map[Y][X] == 1)
+				{
+					cout << "*";
+				}
+			}
+			cout << "\n";
 		}
 	}
 
