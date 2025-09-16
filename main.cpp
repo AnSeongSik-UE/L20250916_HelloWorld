@@ -6,25 +6,53 @@ using namespace std;
 
 int main()
 {
-	int item = 3;
+	int PlayerInput = 0;
 
-	cin >> item;
+	//1. °¡À§
+	//2. ÁÖ¸Ô
+	//3. º¸ÀÚ±â
+	cin >> PlayerInput;
 
-	if (item == 1)
+	srand(time(nullptr));
+
+	int EnemyInput = (rand() % 3) + 1;
+
+	if (PlayerInput == EnemyInput)
 	{
-		cout << "ÃÑ" << endl;
+		cout << "¹«½ÂºÎ" << endl;
 	}
-	else if (item == 2)
+	else if (PlayerInput == 1) // °¡À§
 	{
-		cout << "Ä®" << endl;
+		if (EnemyInput == 3)
+		{
+			cout << "½Â¸®" << endl;
+		}
+		else if (EnemyInput == 2)
+		{
+			cout << "ÆÐ¹è" << endl;
+		}
 	}
-	else if (item == 3)
+	else if (PlayerInput == 2) // ÁÖ¸Ô
 	{
-		cout << "ÇÁ¶óÀÌÆÒ" << endl;
+		if (EnemyInput == 1)
+		{
+			cout << "½Â¸®" << endl;
+		}
+		else if (EnemyInput == 3)
+		{
+			cout << "ÆÐ¹è" << endl;
+		}
 	}
-	else
+	else if (PlayerInput == 3) // º¸ÀÚ±â
 	{
-		cout << "ÁÖ¸Ô" << endl;
+		if (EnemyInput == 2)
+		{
+			cout << "½Â¸®" << endl;
+		}
+		else if (EnemyInput == 1)
+		{
+			cout << "ÆÐ¹è" << endl;
+		}
 	}
 
 	return 0;
